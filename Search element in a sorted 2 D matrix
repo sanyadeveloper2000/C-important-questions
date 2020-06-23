@@ -1,0 +1,16 @@
+class Solution {
+public:
+    bool searchMatrix(vector<vector<int>>& matrix, int k) {
+        int r = matrix.size();
+        if (r == 0) return false; //empty matrix
+        int c = matrix[0].size();
+        int i = 0, j = c - 1; //start from first row last column
+        while (i < r && j >= 0)
+        {
+            if (matrix[i][j] == k) return true;       // target found
+            else if (matrix[i][j] > k)  j--;     // if the element is larger than target then all elements are larger hence go one step left
+            else  i++;  // If the element is smaller than the target then all elements in that row before that column are smaller so go forward by one row
+        }
+        return false;  //The element wasn't found
+    }
+};
