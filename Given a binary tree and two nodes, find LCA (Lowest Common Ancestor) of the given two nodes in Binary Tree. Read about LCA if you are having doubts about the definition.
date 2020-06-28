@@ -1,0 +1,20 @@
+BinaryTreeNode<int>* h(BinaryTreeNode<int>* root,int a,int b)
+{
+    if(root==NULL)
+        return NULL;
+    if(root->data==a || root->data==b)
+        return root;
+    BinaryTreeNode<int>* l=h(root->left,a,b);
+    BinaryTreeNode<int>* r=h(root->right,a,b);
+    if(l!=NULL && r!=NULL )
+        return root;
+    if(l==NULL)
+        return r;
+    return l;
+}
+int lcaBinaryTree(BinaryTreeNode <int>* root , int val1, int val2){
+     if(h(root,val1,val2))
+         return h(root,val1,val2)->data;
+    else return -1;
+
+}
